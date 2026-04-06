@@ -6,131 +6,167 @@
   <title>Zen-O</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="app-shell">
-    <header class="hero">
-      <div class="hero-top">
-        <div>
-          <p class="mini-label">Application de motivation</p>
-          <h1>Zen-O</h1>
-          <p class="subtitle">Transforme tes objectifs en récompenses.</p>
-        </div>
-
-        <div class="theme-box">
-          <label for="themeSelect">Thème</label>
-          <select id="themeSelect">
-            <option value="rose">Rose doux</option>
-            <option value="blue">Bleu nuit</option>
-            <option value="sage">Vert zen</option>
-            <option value="beige">Beige minimaliste</option>
-          </select>
-        </div>
+<body class="theme-academique">
+  <div class="phone-app">
+    <header class="top-header">
+      <div>
+        <p class="app-kicker">Organisation • Motivation • Récompense</p>
+        <h1>Zen-O</h1>
+        <p class="app-subtitle">Transforme tes efforts en progression visible.</p>
       </div>
 
-      <div class="quote-card">
-        <p id="motivationText">Chaque petit effort compte.</p>
+      <div class="theme-switcher">
+        <label for="themeSelect">Thème</label>
+        <select id="themeSelect">
+          <option value="academique">Académique</option>
+          <option value="nuit">Nuit étoilée</option>
+          <option value="bureau">Bureau</option>
+          <option value="cute">Cute fille</option>
+          <option value="garcon">Garçon</option>
+        </select>
       </div>
     </header>
 
-    <main class="main-grid">
-      <section class="card form-card">
-        <h2>Ajouter un objectif</h2>
+    <section class="welcome-card">
+      <h2 id="welcomeTitle">Ton espace d’évolution</h2>
+      <p id="welcomeText">
+        Ajoute un objectif, note ce que tu as réellement fait, puis débloque ta récompense selon ta progression.
+      </p>
+    </section>
+
+    <main class="main-layout">
+      <section class="card input-card">
+        <div class="section-title">
+          <h2>Nouvel objectif</h2>
+          <p>Crée un objectif clair avec suivi réel.</p>
+        </div>
+
         <form id="goalForm">
-          <div class="form-group">
-            <label for="goalTitle">Nom de l’objectif</label>
-            <input
-              type="text"
-              id="goalTitle"
-              placeholder="Exemple : Réviser 2 heures"
-              required
-            />
+          <div class="grid-2">
+            <div class="field">
+              <label for="goalTitle">Nom de l’objectif</label>
+              <input type="text" id="goalTitle" placeholder="Ex : Courir, Réviser, Lire..." required />
+            </div>
+
+            <div class="field">
+              <label for="goalCategory">Catégorie</label>
+              <select id="goalCategory" required>
+                <option value="">Choisir</option>
+                <option value="Académique">Académique</option>
+                <option value="Sport">Sport</option>
+                <option value="Santé">Santé</option>
+                <option value="Sommeil">Sommeil</option>
+                <option value="Jeûne">Jeûne</option>
+                <option value="Bien-être">Bien-être</option>
+                <option value="Personnel">Personnel</option>
+              </select>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="goalCategory">Catégorie</label>
-            <select id="goalCategory" required>
-              <option value="">Choisir une catégorie</option>
-              <option value="Académique">Académique</option>
-              <option value="Sport">Sport</option>
-              <option value="Santé">Santé</option>
-              <option value="Sommeil">Sommeil</option>
-              <option value="Jeûne">Jeûne</option>
-              <option value="Bien-être">Bien-être</option>
-              <option value="Personnel">Personnel</option>
-            </select>
+          <div class="field">
+            <label for="goalSubcategory">Sous-catégorie</label>
+            <div class="subcat-row">
+              <select id="goalSubcategory">
+                <option value="">Choisir ou ajouter</option>
+              </select>
+              <input type="text" id="customSubcategory" placeholder="Ajouter une sous-catégorie" />
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="goalTarget">Objectif à atteindre</label>
-            <input
-              type="text"
-              id="goalTarget"
-              placeholder="Exemple : 2h, 10 000 pas, 8h de sommeil..."
-              required
-            />
+          <div class="suggestion-box">
+            <p class="suggestion-title">Suggestions</p>
+            <div id="categorySuggestions" class="chips"></div>
           </div>
 
-          <div class="form-group">
+          <div class="grid-3">
+            <div class="field">
+              <label for="goalTarget">Objectif visé</label>
+              <input type="number" id="goalTarget" min="0" step="0.1" placeholder="Ex : 2" required />
+            </div>
+
+            <div class="field">
+              <label for="goalDone">Réalisé</label>
+              <input type="number" id="goalDone" min="0" step="0.1" placeholder="Ex : 1" required />
+            </div>
+
+            <div class="field">
+              <label for="goalUnit">Unité</label>
+              <input type="text" id="goalUnit" placeholder="km, h, pages, exos..." required />
+            </div>
+          </div>
+
+          <div class="field">
             <label for="goalReward">Récompense</label>
-            <input
-              type="text"
-              id="goalReward"
-              placeholder="Exemple : 30 min de sortie"
-              required
-            />
+            <input type="text" id="goalReward" placeholder="Ex : 30 min de sortie, épisode, dessert..." required />
           </div>
 
-          <button type="submit" class="primary-btn">Ajouter</button>
+          <div class="suggestion-box">
+            <p class="suggestion-title">Idées de récompenses</p>
+            <div id="rewardSuggestions" class="chips"></div>
+          </div>
+
+          <button type="submit" class="primary-btn">Ajouter l’objectif</button>
         </form>
       </section>
 
       <section class="card stats-card">
-        <h2>Mon suivi</h2>
+        <div class="section-title">
+          <h2>Vue d’ensemble</h2>
+          <p>Une lecture simple de tes progrès.</p>
+        </div>
+
         <div class="stats-grid">
-          <div class="stat-box">
-            <span class="stat-number" id="totalGoals">0</span>
-            <span class="stat-label">Objectifs</span>
+          <div class="stat-card">
+            <span id="totalGoals">0</span>
+            <small>Objectifs</small>
           </div>
-          <div class="stat-box success">
-            <span class="stat-number" id="successCount">0</span>
-            <span class="stat-label">Réussites</span>
+          <div class="stat-card">
+            <span id="averageProgress">0%</span>
+            <small>Progression moyenne</small>
           </div>
-          <div class="stat-box fail">
-            <span class="stat-number" id="failCount">0</span>
-            <span class="stat-label">Échecs</span>
+          <div class="stat-card">
+            <span id="completedGoals">0</span>
+            <small>Objectifs atteints</small>
           </div>
         </div>
 
-        <div class="progress-wrapper">
-          <div class="progress-top">
-            <span>Taux de réussite</span>
-            <span id="successRate">0%</span>
+        <div class="big-progress-card">
+          <div class="progress-row">
+            <span>Taux global</span>
+            <span id="globalRateText">0%</span>
           </div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
+          <div class="progress-track">
+            <div id="globalProgressBar" class="progress-value"></div>
           </div>
+        </div>
+
+        <div class="mini-block">
+          <h3>Par catégorie</h3>
+          <div id="categoryStats" class="category-stats"></div>
         </div>
       </section>
 
       <section class="card goals-card">
         <div class="section-head">
-          <h2>Mes objectifs</h2>
+          <div>
+            <h2>Mes objectifs</h2>
+            <p class="section-sub">Chaque carte montre la progression réelle.</p>
+          </div>
           <button id="clearAllBtn" class="secondary-btn">Tout supprimer</button>
         </div>
 
         <div id="goalsList" class="goals-list">
-          <div class="empty-state" id="emptyGoals">
-            Aucun objectif pour le moment.
-          </div>
+          <div class="empty-state">Aucun objectif pour le moment.</div>
         </div>
       </section>
 
-      <section class="card rewards-card">
-        <h2>Récompenses débloquées</h2>
+      <section class="card reward-card-wrap">
+        <div class="section-title">
+          <h2>Récompenses débloquées</h2>
+          <p>Débloquées quand l’objectif atteint 100 %.</p>
+        </div>
         <div id="rewardsList" class="rewards-list">
-          <div class="empty-state" id="emptyRewards">
-            Aucune récompense débloquée pour l’instant.
-          </div>
+          <div class="empty-state">Aucune récompense débloquée.</div>
         </div>
       </section>
     </main>
