@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zen-O</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero-top">
+        <div>
+          <p class="mini-label">Application de motivation</p>
+          <h1>Zen-O</h1>
+          <p class="subtitle">Transforme tes objectifs en récompenses.</p>
+        </div>
+
+        <div class="theme-box">
+          <label for="themeSelect">Thème</label>
+          <select id="themeSelect">
+            <option value="rose">Rose doux</option>
+            <option value="blue">Bleu nuit</option>
+            <option value="sage">Vert zen</option>
+            <option value="beige">Beige minimaliste</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="quote-card">
+        <p id="motivationText">Chaque petit effort compte.</p>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="card form-card">
+        <h2>Ajouter un objectif</h2>
+        <form id="goalForm">
+          <div class="form-group">
+            <label for="goalTitle">Nom de l’objectif</label>
+            <input
+              type="text"
+              id="goalTitle"
+              placeholder="Exemple : Réviser 2 heures"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="goalCategory">Catégorie</label>
+            <select id="goalCategory" required>
+              <option value="">Choisir une catégorie</option>
+              <option value="Académique">Académique</option>
+              <option value="Sport">Sport</option>
+              <option value="Santé">Santé</option>
+              <option value="Sommeil">Sommeil</option>
+              <option value="Jeûne">Jeûne</option>
+              <option value="Bien-être">Bien-être</option>
+              <option value="Personnel">Personnel</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="goalTarget">Objectif à atteindre</label>
+            <input
+              type="text"
+              id="goalTarget"
+              placeholder="Exemple : 2h, 10 000 pas, 8h de sommeil..."
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="goalReward">Récompense</label>
+            <input
+              type="text"
+              id="goalReward"
+              placeholder="Exemple : 30 min de sortie"
+              required
+            />
+          </div>
+
+          <button type="submit" class="primary-btn">Ajouter</button>
+        </form>
+      </section>
+
+      <section class="card stats-card">
+        <h2>Mon suivi</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-number" id="totalGoals">0</span>
+            <span class="stat-label">Objectifs</span>
+          </div>
+          <div class="stat-box success">
+            <span class="stat-number" id="successCount">0</span>
+            <span class="stat-label">Réussites</span>
+          </div>
+          <div class="stat-box fail">
+            <span class="stat-number" id="failCount">0</span>
+            <span class="stat-label">Échecs</span>
+          </div>
+        </div>
+
+        <div class="progress-wrapper">
+          <div class="progress-top">
+            <span>Taux de réussite</span>
+            <span id="successRate">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card goals-card">
+        <div class="section-head">
+          <h2>Mes objectifs</h2>
+          <button id="clearAllBtn" class="secondary-btn">Tout supprimer</button>
+        </div>
+
+        <div id="goalsList" class="goals-list">
+          <div class="empty-state" id="emptyGoals">
+            Aucun objectif pour le moment.
+          </div>
+        </div>
+      </section>
+
+      <section class="card rewards-card">
+        <h2>Récompenses débloquées</h2>
+        <div id="rewardsList" class="rewards-list">
+          <div class="empty-state" id="emptyRewards">
+            Aucune récompense débloquée pour l’instant.
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
